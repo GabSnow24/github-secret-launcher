@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsBase64, IsString, ValidateNested } from 'class-validator';
+import { IsBase64, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { RepoInformation } from '../interfaces/config.service.interface';
 
 
@@ -42,21 +42,24 @@ export class RepoInfoDto implements RepoInformation {
     readonly name: string;
 
     @IsBase64()
+    @IsOptional()
     @ApiProperty({
         description: 'Public Key obtained',
         default: "DEFAULT_BASE64",
         type: String
     })
-    readonly publicKey: string;
+    readonly publicKey?: string;
 
     @IsString()
+    @IsOptional()
     @ApiProperty({
         description: 'Public Key Id obtained',
         default: "DEFAULT_BASE64_ID",
         type: String
     })
-    readonly publicKeyId: string;
+    readonly publicKeyId?: string;
 }
+
 export class CreateSecretDto {
 
     @ApiProperty({

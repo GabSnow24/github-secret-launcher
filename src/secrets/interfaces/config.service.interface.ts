@@ -7,3 +7,7 @@ export interface RepoInformation {
     owner: string,
     name: string
 }
+
+export interface EnvInformation {
+    name: string
+}

@@ -1,6 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerDocumentOptions, SwaggerModule } from '@nestjs/swagger';
+import { useContainer } from 'class-validator';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -12,6 +13,7 @@ async function bootstrap() {
     .build();
   const options: SwaggerDocumentOptions = {
     operationIdFactory: (
+      controllerKey: string,
       methodKey: string
     ) => methodKey
   };
